@@ -8,7 +8,7 @@ public static class ArraysTester {
         double[] multiples = MultiplesOf(7, 5);
         Console.WriteLine($"<double>{{{string.Join(',', multiples)}}}"); // <double>{7, 14, 21, 28, 35}
         multiples = MultiplesOf(1.5, 10);
-        Console.WriteLine($"<double>{{{string.Join(',', multiples)}}}"); // <double>{1.5, 3.0, 4.5, 6.0, 7.5, 9.0, 10.5, 12.0, 13.5, 15.0}
+        Console.WriteLine($"<double>{{{string.Join(';', multiples)}}}"); // <double>{1.5, 3.0, 4.5, 6.0, 7.5, 9.0, 10.5, 12.0, 13.5, 15.0}
         multiples = MultiplesOf(-2, 10);
         Console.WriteLine($"<double>{{{string.Join(',', multiples)}}}"); // <double>{-2, -4, -6, -8, -10, -12, -14, -16, -18, -20}
 
@@ -34,12 +34,17 @@ public static class ArraysTester {
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     private static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // define an array to hold the multiples
+        double[] multiples = new double[length];
 
-        return new double[0]; // replace this return statement with your own
+        // loop until it reaches the length, and multiple the number by the index to obtain the next multiple
+        for (int i = 0; i < length; i++)
+        {
+            multiples[i] = number * (i + 1);
+        }
+
+        // return multiples of number
+        return multiples;
     }
     
     /// <summary>
@@ -52,10 +57,31 @@ public static class ArraysTester {
     /// </summary>
     private static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
 
+        // special cases
+        if(amount == 0 || amount == data.Count || data == null || data.Count == 0) {
+            return;
+        }
+
+        // array to hold the rotated values
+        List<int> auxiliarArray = new List<int>();
+
+        // array to hold the rotated values until amount
+        List<int> itemsUntilAmount = data.GetRange(data.Count - amount, amount);
+
+        // array to hold the rotated values before amount
+        List<int> itemsBeforeAmount = data.GetRange(0, data.Count - amount);
+
+        // add last values to auxiliar array
+        auxiliarArray.AddRange(itemsUntilAmount);
+
+        // add last before to auxiliar array
+        auxiliarArray.AddRange(itemsBeforeAmount);
+
+        // clear original array
+        data.Clear();
+
+        // add rotated values to original array
+        data.AddRange(auxiliarArray);
     }
 }
