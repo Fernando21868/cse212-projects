@@ -16,7 +16,7 @@
         while (players.Length > 0)
             players.GetNextPerson();
         // Defect(s) Found: 
-
+        // The PersonQueue class was poorly implemented, because the Enqueue method added the person to the beginning of the list, when in reality it had to add it to the last.
         Console.WriteLine("---------");
 
         // Test 2
@@ -39,7 +39,7 @@
             players.GetNextPerson();
 
         // Defect(s) Found: 
-
+        // The PersonQueue class was poorly implemented, because the Enqueue method added the person to the beginning of the list, when in reality it had to add it to the last.
         Console.WriteLine("---------");
 
         // Test 3
@@ -57,7 +57,8 @@
             // Console.WriteLine(players);
         }
         // Defect(s) Found: 
-
+        // The GetNextPerson method in the TakingTurns class was missing the requirement to verify if the value of the person's turn was less than or equal to 0, if true it put the person back in the queue
+        // The PersonQueue class was poorly implemented, because the Enqueue method added the person to the beginning of the list, when in reality it had to add it to the last.
         Console.WriteLine("---------");
 
          // Test 4
@@ -74,7 +75,8 @@
             // Console.WriteLine(players);
         }
         // Defect(s) Found: 
-
+        // The GetNextPerson method in the TakingTurns class was missing the requirement to verify if the value of the person's turn was less than or equal to 0, if true it put the person back in the queue
+        // The PersonQueue class was poorly implemented, because the Enqueue method added the person to the beginning of the list, when in reality it had to add it to the last.
         Console.WriteLine("---------");
 
         // Test 5
@@ -84,5 +86,6 @@
         players = new TakingTurnsQueue();
         players.GetNextPerson();
         // Defect(s) Found:
+        // The GetNextPerson method in the TakingTurns class was missing the requirement to verify if the value of the person's turn was less than or equal to 0, if true it put the person back in the queue
     }
 }
