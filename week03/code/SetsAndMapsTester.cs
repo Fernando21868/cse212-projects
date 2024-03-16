@@ -121,7 +121,7 @@ public static class SetsAndMapsTester {
             // Check if the reversed word exists in the set
             if (seenWords.Contains(reverseWord) && word[0] != word[1])
             {
-                Console.WriteLine($"{reverseWord} & {word}");
+                Console.WriteLine($"{word} & {reverseWord}");
             }
             else
             {
