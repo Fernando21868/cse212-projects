@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 public static class TreesTester {
     /// <summary>
     /// Entry point for the Prove 9 tests
@@ -18,13 +20,19 @@ public static class TreesTester {
         tree.Insert(1);
         tree.Insert(6);
         Console.WriteLine(tree.ToString()); // 1, 3, 4, 5, 6, 7, 10
+        Trace.Assert(tree.ToString() == "<Bst>{1, 3, 4, 5, 6, 7, 10}");
 
         Console.WriteLine("\n=========== PROBLEM 2 TESTS ===========");
         Console.WriteLine(tree.Contains(3)); // True
+        Trace.Assert(tree.Contains(3) == true);
         Console.WriteLine(tree.Contains(2)); // False
+        Trace.Assert(tree.Contains(2) == false);
         Console.WriteLine(tree.Contains(7)); // True
+        Trace.Assert(tree.Contains(7) == true);
         Console.WriteLine(tree.Contains(6)); // True
+        Trace.Assert(tree.Contains(6) == true);
         Console.WriteLine(tree.Contains(9)); // False
+        Trace.Assert(tree.Contains(9) == false);
 
         Console.WriteLine("\n=========== PROBLEM 3 TESTS ===========");
         foreach (var value in tree.Reverse()) {
@@ -33,10 +41,13 @@ public static class TreesTester {
 
         Console.WriteLine("\n=========== PROBLEM 4 TESTS ===========");
         Console.WriteLine(tree.GetHeight()); // 3
+        Trace.Assert(tree.GetHeight() == 3);
         tree.Insert(6);
         Console.WriteLine(tree.GetHeight()); // 3
+        Trace.Assert(tree.GetHeight() == 3);
         tree.Insert(12);
         Console.WriteLine(tree.GetHeight()); // 4
+        Trace.Assert(tree.GetHeight() == 4);
 
         Console.WriteLine("\n=========== PROBLEM 5 TESTS ===========");
         var tree1 = CreateTreeFromSortedList(new[] { 10, 20, 30, 40, 50, 60 });
